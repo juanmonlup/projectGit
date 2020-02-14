@@ -23,6 +23,8 @@ public class MonforteP17 {
         int letterInt;
         String letterString;
         String letterString2;
+        int numInt;
+        String numberCH;
         while (option != 0) {
             userMenu();
             option = keyboard.nextInt();
@@ -73,14 +75,13 @@ public class MonforteP17 {
                 case 8:
                     System.out.println("Text a name: ");
                     letterString = keyboard.next();
-                    letterInt = Integer.valueOf(letterString);
-                    letterString2 = Conversion8(letterInt);
-                    System.out.println(letterString2);
+                    String nameBinary = Conversion8(letterString);
+                    System.out.println(nameBinary);
                     break;
                 case 9:
                     System.out.println("Say a number between 0 and 255: ");
-                    int numInt = keyboard.nextInt();
-                    String numberCH = Conversion9(numInt);
+                    numInt = keyboard.nextInt();
+                    numberCH = Conversion9(numInt);
                     System.out.println(numberCH);
                     break;
                 case 10:
@@ -137,7 +138,6 @@ public class MonforteP17 {
     private static float Conversion(int cash) {
         float result = (float) cash;
         return result;
-
     }
 
     private static double Conversion2(int cash) {
@@ -170,9 +170,15 @@ public class MonforteP17 {
         return binary;
     }
 
-    private static String Conversion8(int IntValue) {
-        String binary = Integer.toBinaryString(IntValue);
-        return binary;
+    private static String Conversion8(String StringValue) {
+        String result = "";
+        char numchar;
+        for(int i=0; i<StringValue.length(); i++){
+        numchar = StringValue.charAt(i);
+        result += Integer.toBinaryString(numchar)+" ";
+        }
+        
+        return result;
     }
 
     private static String Conversion9(int numberInt) {
